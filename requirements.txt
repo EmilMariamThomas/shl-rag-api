@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+langchain
+langchain-google-genai
+faiss-cpu
+python-dotenv
+pydantic
+numpy
+sentence-transformers==2.7.0
+torch==2.2.2
