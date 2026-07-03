@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from agent import chat  # your existing function
+from agent import chat
 
 app = FastAPI(title="SHL AI Agent")
 
@@ -18,10 +18,20 @@ class ChatResponse(BaseModel):
     end_of_conversation: bool
 
 
-# ---------- Health Check ----------
+# ---------- Home ----------
 @app.get("/")
 def home():
-    return {"status": "running"}
+    return {
+        "message": "SHL AI Agent is running"
+    }
+
+
+# ---------- Health Check ----------
+@app.get("/health")
+def health():
+    return {
+        "status": "healthy"
+    }
 
 
 # ---------- Chat Endpoint ----------
