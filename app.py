@@ -6,35 +6,26 @@ from agent import chat
 app = FastAPI(title="SHL AI Agent")
 
 
-# ---------- Request Schema ----------
 class ChatRequest(BaseModel):
     messages: list
 
 
-# ---------- Response Schema ----------
 class ChatResponse(BaseModel):
     reply: str
     recommendations: list
     end_of_conversation: bool
 
 
-# ---------- Home ----------
 @app.get("/")
 def home():
-    return {
-        "message": "SHL AI Agent is running"
-    }
+    return {"message": "SHL AI Agent is running"}
 
 
-# ---------- Health Check ----------
 @app.get("/health")
 def health():
-    return {
-        "status": "healthy"
-    }
+    return {"status": "healthy"}
 
 
-# ---------- Chat Endpoint ----------
 @app.post("/chat", response_model=ChatResponse)
 def chat_endpoint(request: ChatRequest):
 
